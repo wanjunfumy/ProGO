@@ -11,6 +11,6 @@ func Index(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 }
 
 func UserInfo(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
-	fmt.Fprint(w, "START!\nwanjunfu nshima 有的是！")
+	fmt.Fprint(w, "START!\nnshima 有的是！加油吧！")
 
 }
