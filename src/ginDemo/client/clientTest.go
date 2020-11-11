@@ -13,6 +13,7 @@ func main() {
 		return
 	}
 	var reply int
+	// 这里直接暴露接口，不知道有没有其他的办法隐藏起来。如果是服务器能不，应该就不需要了。如果rpc是链接终端？那就不让他们链接到终端，
 	err = cli.Call("Panda.Calculation", 10089, &reply)
 	if err != nil {
 		println("接口请求失败")
