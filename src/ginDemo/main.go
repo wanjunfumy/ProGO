@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"ginDemo/config"
 	_ "ginDemo/docs"
+	"ginDemo/router"
 	"github.com/gin-gonic/gin"
 	ginSwagger "github.com/swaggo/gin-swagger"
 	"github.com/swaggo/gin-swagger/swaggerFiles"
@@ -48,7 +49,7 @@ func Cors() gin.HandlerFunc {
 }
 
 func main() {
-	var c = gin.Default()                                           // use default logger、Recovery
+	var c = router.InitRouter()                                     // use default logger、Recovery
 	c.Use(Cors())                                                   // 跨个域
 	url := ginSwagger.URL("http://localhost:8080/swagger/doc.json") // The url pointing to API definition
 	c.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler, url))
@@ -56,6 +57,7 @@ func main() {
 	c.GET("/hello", pong)
 	c.GET("/cache", up)
 	c.GET("/config", config.Config)
+	c.GET("/config1/:id", config.Config1)
 
 	err := c.Run()
 	if err != nil {
